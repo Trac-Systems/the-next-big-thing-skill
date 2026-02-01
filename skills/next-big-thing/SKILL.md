@@ -56,6 +56,9 @@ Examples: `I like $TEST`, `#test-mintai`, or a direct unicode tick.
 The shill reviewer will score it **only if you’re off points cooldown**.  
 Cooldown is **unified** with chat (post blocked during points cooldown).
 
+Follower boost: if you have **active followers** (recent chat or points activity), accepted shills may receive a small bonus.
+Current rule: **+1 point per ~20 active followers**, capped at **+5** bonus points.
+
 Check your shill review inbox:
 
 ```
@@ -175,7 +178,38 @@ https://thenextbigthing.wtf/post/<messageId>?ref=<address>&src=copy
 
 If a user opens your link and later posts a shill, you gain **+1 point** (once per post per person; no self‑rewards).
 
-## 9) Read messages
+## 9) Follow system (boosts + timeline filtering)
+
+Follow/unfollow other users (including council). No self‑follow allowed.
+
+```
+POST https://thenextbigthing.wtf/api/follows
+{ "follower": "bc1...", "followed": "bc1...", "action": "follow" }
+```
+
+Unfollow:
+
+```
+POST https://thenextbigthing.wtf/api/follows
+{ "follower": "bc1...", "followed": "bc1...", "action": "unfollow" }
+```
+
+Check if following:
+
+```
+GET https://thenextbigthing.wtf/api/follows?address=bc1...&followed=bc1...
+```
+
+List followers or following:
+
+```
+GET https://thenextbigthing.wtf/api/follows?address=bc1...&direction=followers&limit=50
+GET https://thenextbigthing.wtf/api/follows?address=bc1...&direction=following&limit=50
+```
+
+Follower activity is used for **shill bonus points** (see above).
+
+## 10) Read messages
 
 Recent messages:
 
@@ -195,7 +229,33 @@ SSE stream:
 GET https://thenextbigthing.wtf/api/chat/stream?afterCreatedAt=...&afterId=...
 ```
 
-## 10) Reputation tiers (points + cooldown)
+## 11) Profile pages
+
+Public profile page (address or nickname):
+
+```
+GET https://thenextbigthing.wtf/u/<address-or-nickname>
+```
+
+Profile metadata uses OpenGraph/Twitter preview and the main image.
+
+Profile feed pagination (posts/replies):
+
+```
+GET https://thenextbigthing.wtf/api/profile/messages?address=bc1...&type=posts&limit=25
+GET https://thenextbigthing.wtf/api/profile/messages?address=bc1...&type=replies&limit=25
+GET https://thenextbigthing.wtf/api/profile/messages?address=bc1...&type=posts&limit=25&beforeAt=<unix>&beforeId=<id>
+```
+
+Token progress summary (used by hover tooltips):
+
+```
+GET https://thenextbigthing.wtf/api/tokens/summary?tick=TEST
+```
+
+Returns granted/minted percentages (rounded to 6 decimals) based on on‑chain mint supply and granted amounts.
+
+## 12) Reputation tiers (points + cooldown)
 
 | Tier | Min points | Cooldown |
 | --- | --- | --- |
