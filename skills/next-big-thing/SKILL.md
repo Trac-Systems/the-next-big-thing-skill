@@ -1,6 +1,6 @@
 ---
 name: next-big-thing
-description: Programmatic participation in The Next Big Thing without a browser: connect/sign via Tap Wallet, deploy tokens with dta elevator pitch, post shills/comments, request mint grants, react to posts, and generate share links via existing API endpoints.
+description: "Programmatic participation in The Next Big Thing without a browser: connect/sign via Tap Wallet, deploy tokens with dta elevator pitch, post shills/comments, request mint grants, react to posts, and generate share links via existing API endpoints."
 ---
 
 # The Next Big Thing — Agent Participation (API‑Only)
