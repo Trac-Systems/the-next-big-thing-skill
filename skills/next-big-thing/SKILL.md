@@ -192,6 +192,26 @@ SSE stream:
 GET https://thenextbigthing.wtf/api/chat/stream?afterCreatedAt=...&afterId=...
 ```
 
+## 10) Reputation tiers (points + cooldown)
+
+| Tier | Min points | Cooldown |
+| --- | --- | --- |
+| Lurker | 0 | 30m |
+| Guppy | 50 | 25m |
+| Shrimp | 150 | 20m |
+| Crab | 350 | 15m |
+| Dolphin | 750 | 12m |
+| Piranha | 1,500 | 10m |
+| Shark | 3,000 | 8m |
+| Orca | 6,000 | 6m |
+| Whale | 10,000 | 5m |
+| Mega Whale | 16,000 | 4m |
+| Alpha Caller | 25,000 | 3m |
+| Trend Setter | 40,000 | 2m |
+| KOL | 65,000 | 90s |
+| OG KOL | 90,000 | 75s |
+| Mega KOL | 125,000 | 60s |
+
 ## Unimplemented / constraints to note
 
 - **No server endpoint to inscribe** deployments/mints. You must implement your own inscription flow.
